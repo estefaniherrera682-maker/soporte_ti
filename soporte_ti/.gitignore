@@ -1,0 +1,13 @@
+# Secretos y datos
+.env
+soporte.db
+soporte_respaldo.db
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Mascota (Electron)
+mascota/node_modules/
+mascota/dist/

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>Soporte T.I · Especialistas</title>
+
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+  <header class="barra">
+
+    <div class="marca">
+      <span class="punto"></span>
+      <span id="quien">Especialista</span>
+    </div>
+
+    <div id="sesion" hidden>
+      <button
+        class="btn-texto"
+        id="salir"
+        type="button">
+        Cerrar sesión
+      </button>
+    </div>
+
+  </header>
+
+
+  <main>
+
+    <!-- =========================================
+         LOGIN
+         ========================================= -->
+
+    <section
+      id="vista-login"
+      class="tarjeta angosta">
+
+      <h1>Acceso de especialistas</h1>
+
+      <p class="sub">
+        Ingresa tu usuario, contraseña y correo.
+      </p>
+
+      <form id="form-login">
+
+        <label>
+          Usuario de red
+          <input
+            name="usuario"
+            required
+            autocomplete="username">
+        </label>
+
+        <label>
+          Correo electrónico
+          <input
+            type="email"
+            name="correo"
+            required
+            maxlength="254"
+            autocomplete="email">
+        </label>
+
+        <label>
+          Contraseña
+          <input
+            type="password"
+            name="password"
+            required
+            autocomplete="current-password">
+        </label>
+
+        <button
+          class="btn"
+          type="submit">
+          Ingresar
+        </button>
+
+      </form>
+
+      <p
+        class="msg"
+        id="msg-esp"
+        role="alert">
+      </p>
+
+    </section>
+
+    <section
+      id="vista-panel"
+      hidden>
+
+      <div class="encabezado-panel">
+
+        <div class="titulo-panel">
+
+          <h1>
+            Solicitudes pendientes
+          </h1>
+
+          <span
+            class="contador"
+            id="contador">
+            0
+          </span>
+
+        </div>
+
+        <select
+          id="filtro-categoria"
+          class="filtro">
+
+        </select>
+
+      </div>
+
+      <div
+        id="lista"
+        class="lista">
+      </div>
+
+      <p
+        class="vacio"
+        id="vacio"
+        hidden>
+        No hay solicitudes por atender.
+        Esta lista se actualiza sola.
+      </p>
+
+
+      <h2 class="sec">
+        En atención
+      </h2>
+
+      <div
+        id="mis-casos"
+        class="lista">
+      </div>
+
+    </section>
+
+
+  
+<section id="vista-chat" hidden>
+
+  <div class="encabezado-panel">
+
+    <button class="btn-texto" id="volver-panel" type="button">
+      ← Volver
+    </button>
+
+    <h1 id="titulo-chat">Chat</h1>
+
+    <button class="btn" id="resolver" type="button">
+      Resolver
+    </button>
+
+  </div>
+
+  <div class="tarjeta chat">
+
+    <div id="caja-chat" class="caja-chat"></div>
+
+    <form id="form-chat" class="form-chat" autocomplete="off">
+
+      <input
+        type="text"
+        placeholder="Escribe un mensaje..."
+        autocomplete="off"
+        required
+      >
+
+      <button class="btn" type="submit">
+        Enviar
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script src="/static/chat.js"></script>
+  <script src="/especialistas/panel.js"></script>
+
+</body>
+</html>

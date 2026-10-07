@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Soporte T.I.</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<main>
+  <section id="vista-solicitud" class="tarjeta">
+    <div id="bloque-form">
+      <h1>¿Tienes un problema con tu equipo?</h1>
+      <p class="sub">Cuéntanos qué pasa y un especialista de T.I. te atenderá.</p>
+      <form id="form-solicitud" autocomplete="off">
+        <label>Nombre<input name="nombre" required autocomplete="off"></label>
+        <label>Correo<input type="email" name="correo" required autocomplete="off" placeholder="Ej. usuario@comfenalco.com.co"></label>
+        <label>Dependencia<input name="dependencia" required autocomplete="off" placeholder="Ej. Contabilidad"></label>
+        <label>Categoría
+          <select name="categoria" id="categoria" required></select>
+        </label>
+               <label>Observación
+          <textarea name="observacion" rows="4" required placeholder="Ej. presento falla al ingresar a seven"></textarea>
+        </label>
+        <p id="msg-sol" class="msg"></p>
+        <button class="btn" type="submit">Enviar solicitud</button>
+      </form>
+    
+    </div>
+    <div id="bloque-espera" class="espera" hidden>
+      <div class="pulso" id="pulso"></div>
+      <h1 id="titulo-espera">Solicitud enviada</h1>
+      <p class="sub" id="texto-espera">En unos momentos lo atenderá uno de nuestros especialistas.</p>
+      <div id="chat" class="chat" hidden>
+        <div id="caja-chat" class="caja-chat"></div>
+        <form id="form-chat" class="form-chat" autocomplete="off">
+          <input placeholder="Escribe un mensaje..." autocomplete="off" required>
+          <button class="btn" type="submit">Enviar</button>
+        </form>
+      </div>
+      <button class="btn-texto" id="otra">Enviar otra solicitud</button>
+    </div>
+  </section>
+</main>
+<script src="/static/chat.js"></script>
+<script src="/static/app.js"></script>
+</body>
+</html>

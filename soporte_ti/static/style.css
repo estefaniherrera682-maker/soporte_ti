@@ -1,0 +1,908 @@
+/* =========================================================
+   VARIABLES
+   ========================================================= */
+
+:root {
+  --fondo: #eef2f1;
+  --papel: #ffffff;
+  --tinta: #16302b;
+  --suave: #5b7069;
+  --linea: #d3ddda;
+
+  --marca: #113904;
+  --marca-osc: #1d8718;
+
+  --alerta: #e8a020;
+  --error: #b3261e;
+
+  --sombra:
+    0 1px 2px rgba(22,48,43,.08),
+    0 8px 24px -12px rgba(22,48,43,.18);
+}
+
+
+/* =========================================================
+   MODO OSCURO
+   ========================================================= */
+
+@media (prefers-color-scheme: dark) {
+
+  :root {
+    --fondo: #0e1a17;
+    --papel: #15261f;
+    --tinta: #e6efec;
+    --suave: #93aaa3;
+    --linea: #284039;
+
+    --marca: #3fb59f;
+    --marca-osc: #2f9a86;
+
+    --sombra: none;
+  }
+
+}
+
+
+/* =========================================================
+   GENERAL
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+
+body {
+  background: var(--fondo);
+  color: var(--tinta);
+
+  font:
+    16px/1.5
+    "Segoe UI",
+    system-ui,
+    sans-serif;
+}
+
+
+h1 {
+  font-size: 1.6rem;
+  line-height: 1.2;
+
+  margin: 0 0 .4rem;
+
+  letter-spacing: -.01em;
+}
+
+
+h2 {
+  line-height: 1.2;
+}
+
+
+.sub {
+  color: var(--suave);
+
+  margin:
+    0 0 1.5rem;
+
+  max-width: 60ch;
+}
+
+
+/* =========================================================
+   BARRA VERDE SUPERIOR
+   ========================================================= */
+
+.barra {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+
+  padding: .8rem 1rem;
+
+  background: #105319;
+
+  color: #ffffff;
+}
+
+
+/* Nombre del especialista */
+
+.marca {
+  display: flex;
+
+  align-items: center;
+
+  gap: .55rem;
+
+  margin: 0;
+
+  color: #ffffff;
+
+  font-weight: 700;
+  font-size: 1rem;
+
+  white-space: nowrap;
+}
+
+
+/* Punto verde/blanco */
+
+.punto {
+  width: .7rem;
+  height: .7rem;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(225,255,225,.22);
+}
+
+
+/* Zona derecha */
+
+#sesion {
+  display: flex;
+
+  align-items: center;
+
+  margin-left: auto;
+}
+
+
+/* Botón cerrar sesión */
+
+#sesion .btn-texto {
+  margin: 0;
+
+  padding: .3rem .4rem;
+
+  color: #ffffff;
+
+  font-size: .9rem;
+}
+
+
+/* =========================================================
+   CONTENIDO PRINCIPAL
+   ========================================================= */
+
+main {
+  width: 100%;
+}
+
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
+
+main:has(#vista-login:not([hidden])) {
+
+  min-height:
+    calc(100vh - 60px);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+#vista-login {
+  width: 100%;
+
+  max-width: 420px;
+
+  margin: 0 auto;
+}
+
+
+.tarjeta {
+  background: var(--papel);
+
+  border:
+    1px solid
+    var(--linea);
+
+  border-radius: 14px;
+
+  padding: 1.5rem;
+
+  box-shadow: var(--sombra);
+}
+
+
+.angosta {
+  max-width: 420px;
+
+  margin: 2rem auto;
+}
+
+
+/* =========================================================
+   FORMULARIOS
+   ========================================================= */
+
+form {
+  display: grid;
+
+  gap: 1rem;
+}
+
+
+label {
+  display: grid;
+
+  gap: .35rem;
+
+  font-weight: 600;
+  font-size: .95rem;
+}
+
+
+input,
+textarea,
+select {
+
+  width: 100%;
+
+  font: inherit;
+
+  padding: .65rem .8rem;
+
+  border:
+    1px solid
+    var(--linea);
+
+  border-radius: 8px;
+
+  background: var(--fondo);
+
+  color: var(--tinta);
+}
+
+
+textarea {
+  resize: vertical;
+}
+
+
+input:focus,
+textarea:focus,
+select:focus,
+button:focus-visible {
+
+  outline:
+    3px solid
+    color-mix(
+      in srgb,
+      var(--marca) 45%,
+      transparent
+    );
+
+  outline-offset: 1px;
+
+  border-color: var(--marca);
+}
+
+
+/* =========================================================
+   BOTONES
+   ========================================================= */
+
+.btn {
+
+  background: var(--marca);
+
+  color: #ffffff;
+
+  border: 0;
+
+  border-radius: 8px;
+
+  padding: .8rem 1.2rem;
+
+  font: inherit;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background .15s;
+}
+
+
+.btn:hover {
+  background: var(--marca-osc);
+}
+
+
+.btn:disabled {
+  opacity: .6;
+
+  cursor: wait;
+}
+
+
+.btn-texto {
+
+  background: none;
+
+  border: 0;
+
+  color: var(--marca);
+
+  font: inherit;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   MENSAJES
+   ========================================================= */
+
+.msg {
+
+  min-height: 1.4rem;
+
+  margin: .75rem 0 0;
+
+  color: var(--error);
+
+  font-weight: 600;
+}
+
+
+.msg.ok {
+  color: var(--marca);
+}
+
+
+/* =========================================================
+   PANEL DE ESPECIALISTAS
+   ========================================================= */
+
+#vista-panel {
+
+  width: calc(100% - 24px);
+
+  max-width: 1100px;
+
+  margin:
+    1.2rem auto;
+
+  padding:
+    1.2rem;
+
+  background: var(--papel);
+
+  border:
+    1px solid
+    var(--linea);
+
+  border-radius: 14px;
+
+  box-shadow: var(--sombra);
+}
+
+
+/* =========================================================
+   ENCABEZADO DEL PANEL
+   ========================================================= */
+
+#vista-panel .encabezado-panel {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: .65rem;
+
+  margin-bottom: 1rem;
+
+  width: 100%;
+}
+
+
+/* Título + contador */
+
+.titulo-panel {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: .6rem;
+
+  min-width: 0;
+}
+
+
+#vista-panel .encabezado-panel h1 {
+
+  margin: 0;
+
+  font-size: 1.25rem;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   CONTADOR
+   ========================================================= */
+
+.contador {
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 1.8rem;
+  height: 1.8rem;
+
+  padding:
+    .1rem .5rem;
+
+  background: var(--alerta);
+
+  color: #2b1c00;
+
+  font-weight: 800;
+
+  border-radius: 999px;
+
+  text-align: center;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   FILTRO
+   ========================================================= */
+
+.filtro {
+
+  width: 200px;
+
+  min-width: 180px;
+
+  margin-left: auto;
+
+  padding:
+    .55rem .7rem;
+}
+
+
+/* =========================================================
+   LISTA DE SOLICITUDES
+   ========================================================= */
+
+.lista {
+
+  display: grid;
+
+  gap: .75rem;
+
+  width: 100%;
+}
+
+
+/* =========================================================
+   TARJETA DE SOLICITUD
+   ========================================================= */
+
+.caso {
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto;
+
+  gap: .4rem 1rem;
+
+  align-items: center;
+
+  width: 100%;
+
+  background: var(--papel);
+
+  border:
+    1px solid
+    var(--linea);
+
+  border-left:
+    5px solid
+    var(--alerta);
+
+  border-radius: 10px;
+
+  padding:
+    .85rem 1rem;
+
+  box-shadow: var(--sombra);
+}
+
+
+.caso h2 {
+
+  margin: 0;
+
+  font-size: 1rem;
+}
+
+
+.caso .meta {
+
+  color: var(--suave);
+
+  font-size: .85rem;
+}
+
+
+.caso p {
+
+  grid-column: 1;
+
+  margin: .15rem 0 0;
+
+  font-size: .9rem;
+}
+
+
+.caso .btn {
+
+  grid-column: 2;
+
+  grid-row: 1 / span 3;
+
+  white-space: nowrap;
+}
+
+
+.caso.resuelto {
+  border-left-color: var(--marca);
+}
+
+
+/* =========================================================
+   SIN SOLICITUDES
+   ========================================================= */
+
+.vacio {
+
+  color: var(--suave);
+
+  text-align: center;
+
+  padding:
+    1.5rem .75rem;
+
+  margin: 0;
+}
+
+
+/* =========================================================
+   "EN ATENCIÓN"
+   ========================================================= */
+
+.sec {
+
+  font-size: 1.05rem;
+
+  margin:
+    1.2rem 0 .65rem;
+}
+
+
+/* =========================
+   CHAT
+   ========================= */
+
+#vista-chat {
+  width: 100%;
+  height: calc(100vh - 60px);
+  padding: .7rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#vista-chat .encabezado-panel {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: .45rem;
+  width: 100%;
+  margin-bottom: .55rem;
+  flex-shrink: 0;
+}
+
+#vista-chat .encabezado-panel h1 {
+  margin: 0;
+  font-size: 1rem;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#volver-panel {
+  padding: .25rem .35rem;
+  font-size: .82rem;
+  white-space: nowrap;
+}
+
+#resolver {
+  padding: .45rem .55rem;
+  font-size: .72rem;
+  white-space: nowrap;
+}
+
+/* Caja blanca que contiene todo el chat */
+#vista-chat .tarjeta.chat {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  margin: 0;
+  padding: .55rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+/* Área donde aparecen los mensajes */
+.caja-chat {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+  padding: .55rem;
+  background: var(--fondo);
+  border: 1px solid var(--linea);
+  border-radius: 8px;
+  scroll-behavior: smooth;
+}
+
+/* Mensajes */
+.burbuja {
+  max-width: 82%;
+  padding: .45rem .65rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: .15rem;
+  background: var(--papel);
+  border: 1px solid var(--linea);
+  align-self: flex-start;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  font-size: .82rem;
+  line-height: 1.35;
+}
+
+.burbuja.mia {
+  align-self: flex-end;
+  background: var(--marca);
+  color: #ffffff;
+  border-color: var(--marca);
+}
+
+.burbuja small {
+  opacity: .7;
+  font-size: .68rem;
+}
+
+/* Campo para escribir */
+.form-chat {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  margin-top: .5rem;
+  flex-shrink: 0;
+}
+
+.form-chat input {
+  flex: 1;
+  min-width: 0;
+  height: 38px;
+  padding: .45rem .6rem;
+  font-size: .82rem;
+}
+
+.form-chat .btn {
+  height: 38px;
+  padding: .45rem .7rem;
+  font-size: .78rem;
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   OCULTAR ELEMENTOS
+   ========================================================= */
+
+[hidden] {
+  display: none !important;
+}
+
+
+/* =========================================================
+   MODO LOGIN
+   ========================================================= */
+
+body.modo-login {
+  background: var(--papel);
+}
+
+
+body.modo-login .barra {
+  display: none;
+}
+
+
+body.modo-login
+main:has(#vista-login:not([hidden])) {
+
+  display: block;
+
+  min-height: 0;
+
+  padding: 0;
+}
+
+
+body.modo-login #vista-login {
+
+  margin: 0;
+
+  max-width: none;
+
+  min-height: 100vh;
+
+  border: 0;
+
+  border-radius: 0;
+
+  box-shadow: none;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  #vista-panel {
+
+    width:
+      calc(100% - 16px);
+
+    margin:
+      .5rem auto;
+
+    padding:
+      1rem;
+  }
+
+
+  #vista-panel
+  .encabezado-panel {
+
+    flex-wrap: wrap;
+  }
+
+
+  #vista-panel
+  .encabezado-panel h1 {
+
+    font-size: 1.15rem;
+  }
+
+
+  .filtro {
+
+    width: 100%;
+
+    min-width: 0;
+
+    margin-left: 0;
+  }
+
+}
+
+
+@media (max-width: 560px) {
+
+  .barra {
+
+    padding:
+      .7rem .8rem;
+  }
+
+
+  .marca {
+
+    font-size: .9rem;
+  }
+
+
+  #sesion .btn-texto {
+
+    font-size: .8rem;
+  }
+
+
+  .caso {
+
+    grid-template-columns: 1fr;
+  }
+
+
+  .caso .btn {
+
+    grid-column: 1;
+
+    grid-row: auto;
+
+    justify-self: start;
+  }
+
+
+  .titulo-panel {
+
+    width: 100%;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCIR ANIMACIONES
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+}
